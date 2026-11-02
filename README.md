@@ -15,6 +15,10 @@ Professional website covering **Growth, Marketing Analytics, Business Intelligen
 
 The website contains clearly labelled **synthetic demonstrations**, not validated real-company dashboard results. The separately published code can analyse the public UCI Online Retail dataset (download independently). ML results shown on the site refer to an earlier **synthetic-data** test; do not interpret them as predictive performance on real customers.
 
-The website uses HTML, CSS and JavaScript with no build step. Enable **GitHub Pages** in Settings → Pages → Deploy from branch → `main` → `/(root)`.
+The website uses HTML, CSS and JavaScript with no build step. Enable **GitHub Pages** in Settings → Pages → Source → **GitHub Actions**, then run the existing deployment workflow. The attempted deployment failed because Pages is not yet enabled.
 
 **Owner:** Diogo Pinto. [GitHub profile](https://github.com/ninjaDX27)
+
+## Launch and installation
+
+[How to open, install and deploy apps using GitHub links (PT)](docs/COMO_ABRIR_INSTALAR_E_PUBLICAR_APPS.md) · [CRO live development environment (Codespaces)](https://codespaces.new/ninjaDX27/cro-landing-pages) · [Deploy CRO using Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FninjaDX27%2Fcro-landing-pages)
