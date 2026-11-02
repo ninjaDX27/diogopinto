@@ -1,0 +1,26 @@
+-- DAX for Power BI Desktop. Convert FactOrders[OrderDate] and DimDate[Date] to Date.
+-- Relationships: DimDate[Date] -> FactOrders[OrderDate],
+-- DimCountry[Country] -> FactOrders[Country]; DimProduct[DominantSKU] -> FactOrders[DominantSKU].
+-- These are gross eligible sales, not profit, net refunds or total store turnover.
+
+Gross Eligible Sales = SUM(FactOrders[Revenue])
+
+Orders = DISTINCTCOUNT(FactOrders[OrderKey])
+
+Active Customers = DISTINCTCOUNT(FactOrders[CustomerID])
+
+Average Order Value = DIVIDE([Gross Eligible Sales], [Orders])
+
+Sales Prior Month = CALCULATE([Gross Eligible Sales], DATEADD(DimDate[Date], -1, MONTH))
+
+MoM Sales Growth % = DIVIDE([Gross Eligible Sales] - [Sales Prior Month], [Sales Prior Month])
+
+Repeat Customers In Selection = COUNTROWS(FILTER(VALUES(FactOrders[CustomerID]),
+  CALCULATE(DISTINCTCOUNT(FactOrders[OrderKey])) >= 2))
+
+Repeat Share In Selection = DIVIDE([Repeat Customers In Selection], [Active Customers])
+
+% Of Selected Market Sales = DIVIDE([Gross Eligible Sales],
+  CALCULATE([Gross Eligible Sales], REMOVEFILTERS(DimCountry[Country])))
+
+-- Repeat Customers In Selection is NOT the predictive 90-day repurchase target.
