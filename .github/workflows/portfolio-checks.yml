@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'projects/**'
+      - 'index.html'
+      - 'index.html'
       - '.github/workflows/portfolio-checks.yml'
   pull_request:
     paths:
@@ -25,6 +27,22 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r projects/sales-performance-dashboard/requirements.txt -r projects/customer-repurchase-propensity/requirements.txt
+      - name: Validate website JavaScript and source links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.S | re.I)
+          assert len(scripts) == 1, "Expected one self-contained inline script"
+          Path("/tmp/site-script.js").write_text(scripts[0], encoding="utf-8")
+          for project in ("sales-performance-dashboard", "customer-repurchase-propensity"):
+              assert Path("projects", project, "README.md").exists()
+              assert f"/{project}" in html
+          assert "<meta name=\"viewport\"" in html
+          print("Portfolio HTML structure and source links validated")
+          PY
+          node --check /tmp/site-script.js
       - name: Validate Python syntax
         run: |
           python -m py_compile projects/sales-performance-dashboard/etl.py projects/sales-performance-dashboard/dashboard.py projects/customer-repurchase-propensity/generate_demo.py projects/customer-repurchase-propensity/train.py
