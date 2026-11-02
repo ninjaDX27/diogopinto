@@ -5,11 +5,11 @@ on:
     paths:
       - 'projects/**'
       - 'index.html'
-      - 'index.html'
       - '.github/workflows/portfolio-checks.yml'
   pull_request:
     paths:
       - 'projects/**'
+      - 'index.html'
       - '.github/workflows/portfolio-checks.yml'
 permissions:
   contents: read
