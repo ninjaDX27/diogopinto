@@ -6,9 +6,9 @@ This repository contains a self-contained, static professional portfolio in `ind
 
 1. Open the repository **Settings**.
 2. Go to **Pages** → **Build and deployment**.
-3. Select **Deploy from a branch**.
-4. Choose **main** and **/(root)**, then save.
-5. GitHub will show the published website URL and deployment status on the Pages screen.
+3. Under **Source**, select **GitHub Actions** (the repository already has a deployment workflow).
+4. Save, then open **Actions → Deploy portfolio to GitHub Pages** and choose **Run workflow** or re-run the failed run.
+5. Check for a successful deployment in Actions and confirm the published website URL under Pages.
 
 Expected GitHub Pages pattern for this user repository:
 `https://ninjadx27.github.io/diogopinto/`
@@ -36,11 +36,15 @@ The MaxFinance Top awareness metrics are previously reported first-party figures
 
 ## Recommended next updates
 
-- Upload the two complete analytics project source directories and link their public repositories in the project cards.
+- The two analytics projects are now published under `projects/` and linked from the portfolio cards. Revalidate their reproducible workflows when source data or dependencies change.
 - Replace the abstract case preview with a published Power BI Embed **only if** a valid, public and permissioned report exists.
 - Add a verified LinkedIn URL, professional email or contact form after checking what should be public.
 - Replace illustrative project results with audited and reproducible data if available.
 - Add browser QA, privacy/accessibility review and SEO metadata for the final production domain.
+
+## Run and install applications by link
+
+[Portuguese step-by-step guide](docs/COMO_ABRIR_INSTALAR_E_PUBLICAR_APPS.md) covers Codespaces, Vercel, GitHub Apps, releases and the first-time Pages configuration. [The mortgage scenario lab](https://codespaces.new/ninjaDX27/cro-landing-pages) can be opened in GitHub Codespaces.
 
 ## Local preview
 
