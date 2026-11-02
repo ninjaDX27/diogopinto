@@ -117,6 +117,26 @@ npm run dev
 - Para dados financeiros e modelos preditivos, usar ambientes de demonstração e clarificar limitações.
 - Antes de enviar a recrutadores, testar a instalação do zero e documentar os resultados.
 
+## 10. Cinco aplicações open source úteis para Growth e Data
+
+**Escolhe uma ou duas e constrói um caso. Ter 20 repositórios copiados não demonstra que dominas 20 produtos.**
+
+| Ferramenta | Para que serve | Começar com segurança | Prioridade |
+| --- | --- | --- | --- |
+| [PostHog](https://github.com/PostHog/posthog) | Product analytics, funis, session replay e testes | [Começar em PostHog Cloud](https://posthog.com) com um projeto de demo; self-host requer servidor e manutenção | Alta |
+| [n8n](https://github.com/n8n-io/n8n) | Orquestrar automações e processos | Ler [docs de hosting](https://docs.n8n.io/hosting/); comparar cloud vs Docker, não colocar credenciais em fluxos públicos | Alta |
+| [Metabase](https://github.com/metabase/metabase) | Dashboards e SQL sobre bases de dados | [Instalação oficial](https://www.metabase.com/docs/latest/installation-and-operation/installing-metabase) via cloud ou Docker | Alta |
+| [Docling](https://github.com/docling-project/docling) | Extrair conteúdo e tabelas de PDF/DOCX para IA | Python 3.10+; ambiente isolado: `pip install docling`; testar documentos públicos | Média |
+| [Appsmith](https://github.com/appsmithorg/appsmith) | Apps internas, painéis de CRM e operações | [Guia de self-hosting](https://docs.appsmith.com/getting-started/setup) ou opção cloud; considerar capacidade da máquina | Média |
+
+### Ordem recomendada
+1. **PostHog** num site/protótipo com dados de demo e eventos autorizados.
+2. **Metabase** sobre uma pequena base SQL de vendas/leads sintéticos.
+3. **n8n** para demonstrar acompanhamento CRM automatizado, com dados fictícios e revisão humana.
+4. Só depois **Docling/Appsmith** quando houver um caso documentado para justificar a ferramenta.
+
+A instalação destas aplicações não foi executada nesta auditoria. Os links apontam para projetos e documentação oficiais; a escolha de cloud e as permissões dependem sempre da tua decisão.
+
 ## Documentação oficial
 
 - GitHub Pages: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
