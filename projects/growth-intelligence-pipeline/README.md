@@ -19,7 +19,18 @@ npm test
 npm run build
 ```
 
-Open `dist/growth/index.html` in any modern browser (works offline — all data are embedded). The site deployment workflow builds the same static dashboard into `/growth/` on GitHub Pages once Pages is enabled.
+Open `dist/growth/index.html` in any modern browser (works offline — the dashboard's aggregates are embedded). The site deployment workflow builds the same static dashboard into `/growth/` on GitHub Pages once Pages is enabled.
+
+### Exported data and SQL
+
+The build also writes the following **synthetic-only** files to `dist/growth/data/`:
+
+- `campaign_daily.csv`: daily campaign-day media spend, impressions, clicks and leads.
+- `lead_lifecycle.csv`: event IDs, campaign sources, dated CRM states, hypothetical loan and commission amounts, and consent flags (no names, emails or phone numbers).
+- `campaign_cohort_metrics.csv`: mature-cohort measures by campaign.
+- `monthly_cohorts.csv`: mature-cohort measures by acquisition month.
+
+[BigQuery cohort query](sql/bigquery_cohort_kpis.sql) shows how to aggregate the two fact tables **before joining**, preventing spend duplication when a campaign-day has multiple leads. Replace the placeholder dataset name and import the CSVs to run it. This SQL was authored for BigQuery but has not been executed against a live BigQuery instance. The browser app and Node tests are the verified execution paths.
 
 ## Data design
 
