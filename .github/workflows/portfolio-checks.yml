@@ -48,6 +48,7 @@ jobs:
           node --test
           node --check src/server.mjs
           node --check src/db.mjs
+          node --check scripts/smoke-test.mjs
       - name: Validate website JavaScript and source links
         run: |
           python - <<'PY'
