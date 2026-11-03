@@ -7,6 +7,7 @@ on:
       - index.html
       - .nojekyll
       - '.github/workflows/deploy-pages.yml'
+      - 'projects/growth-intelligence-pipeline/**'
   workflow_dispatch:
 
 permissions:
@@ -43,15 +44,22 @@ jobs:
           npm ci
           npm test
           npm run build -- --base=./
+      - name: Test and build growth intelligence application
+        working-directory: portfolio/projects/growth-intelligence-pipeline
+        run: |
+          npm test
+          npm run build
       - name: Assemble portfolio and browser demo
         run: |
-          mkdir -p site/cro
+          mkdir -p site/cro site/growth
           cp portfolio/index.html site/index.html
           touch site/.nojekyll
           cp -R cro-app/dist/. site/cro/
+          cp -R portfolio/projects/growth-intelligence-pipeline/dist/growth/. site/growth/
           test -f site/index.html
           test -f site/cro/index.html
-          echo "CRO demo copied into /cro/"
+          test -f site/growth/index.html
+          echo "CRO demo copied into /cro/; growth intelligence into /growth/"
 
       - name: Upload downloadable browser preview
         uses: actions/upload-artifact@v4
