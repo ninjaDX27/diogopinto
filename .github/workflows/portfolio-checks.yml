@@ -42,6 +42,12 @@ jobs:
           test -s dist/growth/data/campaign_cohort_metrics.csv
           test -s dist/growth/data/monthly_cohorts.csv
           node --input-type=module -e "import{readFileSync}from'node:fs';const h=readFileSync('dist/growth/index.html','utf8');if(!h.includes('pipeline-data')||h.includes('<!--SYNTHETIC_DATA-->'))process.exit(1)"
+      - name: Validate MongoDB adapter input and transition rules
+        run: |
+          cd projects/growth-intelligence-pipeline/mongodb
+          node --test
+          node --check src/server.mjs
+          node --check src/db.mjs
       - name: Validate website JavaScript and source links
         run: |
           python - <<'PY'
