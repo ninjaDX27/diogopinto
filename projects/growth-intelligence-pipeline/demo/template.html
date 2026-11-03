@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081323">
+<meta name="description" content="Growth Intelligence Pipeline — demonstração sintética de aquisição, CRM, contratos, receita e decisões de marketing.">
+<title>Growth Intelligence Pipeline | Diogo Pinto</title>
+<style>
+:root{color-scheme:dark;--bg:#07111e;--card:#101f31;--card2:#142b41;--line:#2c4660;--text:#edf6ff;--muted:#91adc5;--blue:#65a9ff;--teal:#65e1c2;--orange:#ffc67c;--danger:#ff9b9b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 5%,#164a6240,transparent 34%),radial-gradient(circle at 8% 23%,#19457c20,transparent 40%),var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}.nav{border-bottom:1px solid var(--line);background:#081423d9;backdrop-filter:blur(15px);position:sticky;top:0;z-index:6}.nav .wrap{min-height:66px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{color:var(--text);font-weight:800;letter-spacing:-.03em}.brand strong{display:inline-grid;place-items:center;width:33px;height:33px;border-radius:9px;background:linear-gradient(140deg,var(--teal),var(--blue));color:#06111d;margin-right:9px;font-size:12px}.navlinks{display:flex;gap:19px;flex-wrap:wrap;font-size:12px}.navlinks a{color:var(--muted)}.navlinks a:hover{color:var(--text)}
+.hero{padding:70px 0 52px}.kicker{text-transform:uppercase;color:var(--teal);letter-spacing:.15em;font-size:11px;font-weight:800}.hero h1{font-size:clamp(37px,6vw,68px);letter-spacing:-.065em;line-height:1.08;margin:18px 0 20px}.hero h1 em{font-style:normal;color:var(--teal)}.hero p{max-width:720px;color:#b2c9d9;font-size:17px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}.chip{padding:7px 11px;background:#133047;border:1px solid #38617a;border-radius:999px;font-size:11px;color:#b6e8ea;font-weight:800}
+.alert{padding:14px 19px;border:1px solid #8c683f;border-radius:14px;background:#5a3d201f;color:#eed0a7;margin-top:28px;font-size:13px}
+.section{padding:28px 0 65px}.sect-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:19px}.sect-head h2{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.05em;line-height:1.2;margin:7px 0}.sect-head p{max-width:480px;color:var(--muted);font-size:13px;margin:0}
+.controls{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:25px 0 18px}.controls label{font-weight:700;color:var(--muted);font-size:11px;display:grid;gap:7px}.controls select{min-width:200px;padding:10px 13px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--text)}.controls select:last-of-type{min-width:190px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.metric{border:1px solid var(--line);background:linear-gradient(155deg,var(--card),#0c1b2b);border-radius:16px;padding:21px}.metric small{color:var(--muted);font-size:12px}.metric strong{display:block;font-size:clamp(24px,3vw,36px);letter-spacing:-.05em;margin:7px 0;font-weight:800}.metric em{font-style:normal;font-size:11px;color:#b1d2df}
+.block{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}.block h3{font-size:19px;margin:0 0 17px;letter-spacing:-.03em}.stack{display:grid;gap:14px}.step-row{display:grid;grid-template-columns:130px 1fr 75px;align-items:center;gap:12px;font-size:13px}.step-row span{color:#d0e4f0}.step-row b{text-align:right}.track{height:12px;border-radius:99px;background:#0b1725;overflow:hidden}.track i{height:100%;display:block;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:99px}.hint{font-size:12px;color:var(--muted);line-height:1.75;margin:17px 0 0}.banner{padding:15px 18px;border-radius:13px;border:1px solid var(--line);background:#0c1a2b;color:var(--muted);font-size:13px;margin-top:14px}
+.kpi-title{font-size:12px;color:var(--muted)}.kpi-big{font-size:34px;letter-spacing:-.06em;font-weight:800;margin:8px 0}.minirow{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;padding:12px 0;border-bottom:1px solid var(--line)}.minirow strong{color:var(--teal)}.minirow:last-child{border-bottom:0}
+.tablewrap{overflow-x:auto;border-radius:15px;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;min-width:760px;background:#0a1828;font-size:12px}th,td{padding:15px 12px;border-bottom:1px solid #263d54;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#152b41;color:#afd1e4;font-weight:800}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}tr:hover td{background:#112336}
+.months{display:flex;align-items:end;gap:11px;height:200px;border-bottom:1px solid var(--line);padding:16px 2px 0}.month{height:100%;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:7px}.month-bars{width:100%;height:155px;display:flex;justify-content:center;align-items:end;gap:5px}.month i{display:block;width:18px;max-width:42%;background:var(--blue);border-radius:4px 4px 0 0;min-height:3px}.month i.contracts{background:var(--teal)}.month label{font-size:10px;color:var(--muted)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:15px}.legend span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--blue);margin-right:6px}.legend span:last-child:before{background:var(--teal)}
+.toggle{display:flex;align-items:center;gap:9px;margin:12px 0}.toggle input{accent-color:#62ddbd;width:18px;height:18px}.toggle label{font-weight:700;color:var(--text)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#061321;border:1px solid #294760;border-radius:13px;padding:20px;color:#b4efce;font-size:12px;min-height:185px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.action{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:23px}.action strong{color:var(--teal);display:block;font-size:12px;margin-bottom:12px}.action h3{font-size:17px;margin:0 0 10px}.action p{font-size:13px;color:var(--muted);margin:0}.foot{border-top:1px solid var(--line);padding:30px 0 45px;color:var(--muted);font-size:12px}.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:13px}
+@media(max-width:850px){.twocol{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.wrap{padding:0 18px}.navlinks{display:none}.hero{padding:50px 0 26px}.grid{grid-template-columns:1fr 1fr;gap:9px}.metric{padding:15px}.metric strong{font-size:24px}.block{padding:18px}.step-row{grid-template-columns:98px 1fr 50px;font-size:11px}.sect-head{display:block}.sect-head p{margin-top:8px}.controls{align-items:stretch}.controls label{width:100%}.controls select{width:100%}.month i{width:12px}.month-bars{gap:3px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><a class="brand" href="../"><strong>DP</strong> Diogo Pinto / Labs</a><div class="navlinks"><a href="#dashboard">Dashboard</a><a href="#economics">Economics</a><a href="#tracking">Tracking</a><a href="#decisions">Decisions</a><a href="https://github.com/ninjaDX27/diogopinto/tree/main/projects/growth-intelligence-pipeline" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></nav>
+<header class="hero wrap"><span class="kicker">END-TO-END GROWTH ANALYTICS / PORTFÓLIO</span>
+<h1>De campanhas a <em>decisões.</em></h1>
+<p>Um funil completo de aquisição, CRM e receita. Explora por canal, compara coortes maduras e investiga onde se perdem oportunidades comerciais.</p>
+<div class="chips"><span class="chip">Node.js · sem dependências</span><span class="chip">Modelação de dados</span><span class="chip">Atribuição e consentimento</span><span class="chip">Decisões com KPIs</span></div>
+<div class="alert"><strong>DEMONSTRAÇÃO SINTÉTICA.</strong> Todos os números, leads, contratos, montantes e comissões foram gerados por código. Não existe ligação a bancos, Google Ads, GA4, Meta ou um CRM real. Não uses os números para tomar decisões comerciais reais.</div>
+</header>
+<main>
+<section class="section wrap" id="dashboard">
+<div class="sect-head"><div><span class="kicker">01 / EXECUTIVE VIEW</span><h2>O que entra. O que converte.</h2></div><p>Período das campanhas: abril–setembro 2026. Data de observação fixa: 1 de novembro de 2026. Os contratos são atribuídos à coorte de aquisição.</p></div>
+<div class="controls">
+<label>Canal de aquisição<select id="channel"><option value="all">Todos os canais</option><option value="Google Search">Google Search</option><option value="Meta Ads">Meta Ads</option><option value="Organic Search">Organic Search</option></select></label>
+<label>Estado das coortes<select id="maturity"><option value="mature">Apenas maduras (≥90 dias)</option><option value="all">Todas (inclui imaturas)</option></select></label>
+</div>
+<div class="grid" aria-live="polite">
+<div class="metric"><small>Leads recebidas</small><strong id="leads">—</strong><em>Leads únicas na coorte</em></div>
+<div class="metric"><small>Leads qualificadas</small><strong id="qualified">—</strong><em id="qualRate">—</em></div>
+<div class="metric"><small>Contratos concluídos</small><strong id="signed">—</strong><em id="convRate">—</em></div>
+<div class="metric"><small>Investimento em anúncios</small><strong id="spend">—</strong><em>Exclui salários e custos orgânicos</em></div>
+<div class="metric"><small>Comissão hipotética</small><strong id="commission">—</strong><em>Hipótese: 0,65% do crédito contratado</em></div>
+<div class="metric"><small>Custo publicitário por contrato</small><strong id="cpc">—</strong><em>Não representa CAC completo</em></div>
+</div>
+<div class="banner" id="maturityNote" role="status"></div>
+</section>
+<section class="section wrap">
+<div class="twocol">
+<article class="block"><h3>Progressão do funil</h3><div class="stack" id="funnel" aria-label="Etapas do funil"></div><p class="hint">As fases são eventos observados até à data de análise. A ausência de uma etapa não implica necessariamente uma recusa definitiva.</p></article>
+<article class="block"><h3>Saúde da atribuição</h3>
+<div class="kpi-title">Leads com evento de analytics autorizado</div><div class="kpi-big" id="analytics">—</div>
+<div class="kpi-title">Leads com evento publicitário autorizado</div><div class="kpi-big" id="advertising">—</div>
+<div class="minirow"><span>Leads sem campanha atribuída</span><strong id="unattributed">—</strong></div>
+<div class="minirow"><span>Identificadores duplicados</span><strong id="duplicates">—</strong></div>
+<div class="minirow"><span>Coortes recentes fora da análise madura</span><strong id="immature">—</strong></div>
+<p class="hint">O CRM demonstra um registo independente dos envios opcionais de analytics/publicidade. As bases legais e consentimentos reais exigem configuração e avaliação específica.</p>
+</article>
+</div>
+</section>
+<section class="section wrap" id="economics">
+<div class="sect-head"><div><span class="kicker">02 / ACQUISITION ECONOMICS</span><h2>Qualidade, custo e receita.</h2></div><p>Custos de meios e comissões simuladas para as mesmas coortes de aquisição. Zero gasto orgânico não significa aquisição gratuita.</p></div>
+<div class="tablewrap"><table><thead><tr><th>Campanha</th><th>Leads</th><th>Qualificadas</th><th>Contratos</th><th>Ads (€)</th><th>CPA contrato (€)</th><th>Comissão (€)</th><th>Comissão / Ads</th></tr></thead><tbody id="campaignRows"></tbody></table></div>
+<p class="hint">Comissão / Ads não é lucro nem ROAS incremental. Não considera salários, comissões de consultores, desenvolvimento, impostos ou custos de oportunidade.</p>
+<div class="block" style="margin-top:22px"><h3>Coortes mensais — leads e contratos</h3><div class="months" id="monthGraph" role="img" aria-label="Coortes mensais com leads e contratos"></div><div class="legend"><span>Leads</span><span>Contratos</span></div></div>
+</section>
+<section class="section wrap" id="tracking">
+<div class="sect-head"><div><span class="kicker">03 / CONSENT-AWARE TRACKING</span><h2>O que é enviado — e quando.</h2></div><p>Simula a passagem de um evento de aquisição para CRM e ferramentas externas. Não faz qualquer pedido à rede.</p></div>
+<div class="twocol">
+<article class="block"><h3>Controlo demonstrativo</h3><p class="hint" style="margin-top:-5px">O CRM recebe um evento sintético sem identidade. As mensagens de analytics e publicidade só aparecem quando a opção respetiva está ativa.</p><div class="toggle"><input type="checkbox" id="analyticsToggle" checked><label for="analyticsToggle">Analytics autorizado</label></div><div class="toggle"><input type="checkbox" id="adsToggle"><label for="adsToggle">Publicidade autorizada</label></div>
+<div class="minirow"><span>Origem</span><strong id="sampleCampaign">—</strong></div><div class="minirow"><span>ID de evento</span><strong id="sampleEvent">—</strong></div><p class="hint">Os interruptores são didáticos; não configuram consentimentos nem enviam eventos para terceiros.</p>
+</article>
+<article class="block"><h3>Payload simulado</h3><pre id="eventPayload" aria-label="Payload de evento simulado">A preparar...</pre></article>
+</div>
+</section>
+<section class="section wrap" id="decisions"><div class="sect-head"><div><span class="kicker">04 / DECISION MEMO</span><h2>Dados só interessam quando mudam ações.</h2></div><p>Exemplos de questões a investigar antes de propor investimento ou automação. São hipóteses num cenário fictício.</p></div><div class="actions" id="actionCards"></div></section>
+</main>
+<footer class="foot"><div class="wrap"><span>Diogo Pinto · Data → Decisions · Projeto de demonstração</span><span><a href="../">Voltar ao portefólio</a> · <a href="https://github.com/ninjaDX27/diogopinto/tree/main/projects/growth-intelligence-pipeline" target="_blank" rel="noopener noreferrer">Ver código e testes ↗</a></span></div></footer>
+<!--SYNTHETIC_DATA-->
+<script>
+(function(){
+"use strict";
+const raw=document.getElementById("pipeline-data");
+if(!raw){document.getElementById("maturityNote").textContent="Dados de demonstração indisponíveis.";return;}
+const source=JSON.parse(raw.textContent);
+const euro=n=>new Intl.NumberFormat("pt-PT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
+const num=n=>new Intl.NumberFormat("pt-PT",{maximumFractionDigits:1}).format(n);
+const $=id=>document.getElementById(id);
+const channel=$("channel"),maturity=$("maturity");
+const text=(id,value)=>{$(id).textContent=value;};
+const st=[["received","Leads recebidas"],["contacted","Contactadas"],["qualified","Qualificadas"],["documented","Documentação"],["approved","Aprovadas"],["signed","Contratos"]];
+function getScope(){
+ return source.snapshots[channel.value][maturity.value];
+}
+function cell(row,string){let el=document.createElement("td");el.textContent=string;row.appendChild(el);}
+function render(){
+ const report=getScope(), k=report.kpis;
+ text("leads",num(k.received));text("qualified",num(k.qualified));
+ text("signed",num(k.signed));text("spend",euro(k.media_cost));
+ text("commission",euro(k.commission));
+ text("cpc",k.media_cost_per_contract===null?"n/d":euro(k.media_cost_per_contract));
+ text("qualRate",num(k.qualified_rate)+"% das leads");
+ text("convRate",num(k.lead_to_contract_rate)+"% das leads");
+ text("maturityNote",report.interpretation+" O período e os valores são sintéticos.");
+ text("analytics",num(report.tracking.analytics_eligible)+" / "+num(report.tracking.total));
+ text("advertising",num(report.tracking.ads_eligible)+" / "+num(report.tracking.total));
+ text("unattributed",num(report.quality.non_attributed));
+ text("duplicates",num(report.quality.repeated_ids));
+ text("immature",num(report.quality.immature_excluded));
+ const funnel=$("funnel");funnel.replaceChildren();
+ for(const [key,label] of st){
+   const row=document.createElement("div");row.className="step-row";
+   const a=document.createElement("span");a.textContent=label;
+   const track=document.createElement("div");track.className="track";
+   const inner=document.createElement("i");inner.style.width= k.received ? (100*k[key]/k.received)+"%" : "0%";
+   track.appendChild(inner);const n=document.createElement("b");n.textContent=num(k[key]);
+   row.append(a,track,n);funnel.appendChild(row);
+ }
+ const rows=$("campaignRows");rows.replaceChildren();
+ for(const c of report.by_campaign){
+   const tr=document.createElement("tr");
+   [c.name,num(c.leads),num(c.qualified),num(c.signed),euro(c.spend),
+    c.media_cost_per_contract===null?"n/d":euro(c.media_cost_per_contract),euro(c.commission),
+    c.commission_to_media_spend===null?"n/d":num(c.commission_to_media_spend)+"×"].forEach(v=>cell(tr,v));
+   rows.appendChild(tr);
+ }
+ const graph=$("monthGraph");graph.replaceChildren();
+ const top=Math.max(1,...report.by_month.map(m=>m.leads));
+ for(const m of report.by_month) {
+   const group=document.createElement("div");group.className="month";
+   const bars=document.createElement("div");bars.className="month-bars";
+   const a=document.createElement("i");a.style.height=(100*m.leads/top)+"%";
+   a.title=m.month+": "+m.leads+" leads";
+   const b=document.createElement("i");b.className="contracts";b.style.height=(100*m.signed/top)+"%";
+   b.title=m.month+": "+m.signed+" contratos";
+   bars.append(a,b);const lab=document.createElement("label");lab.textContent=m.month.slice(5);group.append(bars,lab);graph.appendChild(group);
+ }
+ const cards=$("actionCards");cards.replaceChildren();
+ const google=report.by_campaign.filter(c=>c.channel==="Google Search"),meta=report.by_campaign.find(c=>c.channel==="Meta Ads");
+ const googleLeads=google.reduce((n,c)=>n+c.leads,0),googleQ=google.reduce((n,c)=>n+c.qualified,0);
+ const googleRate=googleLeads?googleQ/googleLeads:null;
+ const metaRate=meta&&meta.leads?meta.qualified/meta.leads:null;
+ const hypotheses=[
+   ["01 / QUALIFICAÇÃO","Auditar qualidade do canal",
+    metaRate!==null&&googleRate!==null?
+    "Neste cenário, Meta qualifica "+num(100*metaRate)+"% e Google Search "+num(100*googleRate)+"%. Testar diferenças de intenção, formulário e contacto antes de redistribuir orçamento.":
+    "Seleciona todos os canais para comparar qualidade por origem e preparar uma auditoria de qualificação."],
+   ["02 / ECONOMIA","Ligar a origem ao contrato",
+    "Comparar gasto de aquisição e comissões apenas para coortes maduras. Depois adicionar custos operacionais e reconciliação financeira antes de avaliar margem."],
+   ["03 / VELOCIDADE","Medir atrasos na documentação",
+    "Registar tempo entre qualificação, documentos e aprovação, com motivos de perda. Uma etapa em falta não significa automaticamente um lead perdido."]
+ ];
+ hypotheses.forEach(([n,h,p])=>{const el=document.createElement("article");el.className="action";
+   const t=document.createElement("strong");t.textContent=n;const title=document.createElement("h3");title.textContent=h;
+   const copy=document.createElement("p");copy.textContent=p;el.append(t,title,copy);cards.appendChild(el);});
+}
+function route(){
+ const e=source.sample;
+ text("sampleCampaign",e.campaign_id);text("sampleEvent",e.event_id);
+ const event={crm:{lead_id:e.lead_id,event_id:e.event_id,campaign_id:e.campaign_id},
+   analytics:$("analyticsToggle").checked?{event:"generate_lead",event_id:e.event_id,campaign_id:e.campaign_id}:null,
+   advertising:$("adsToggle").checked?{event:"Lead",event_id:e.event_id,campaign_id:e.campaign_id}:null};
+ text("eventPayload",JSON.stringify(event,null,2));
+}
+channel.addEventListener("change",render);maturity.addEventListener("change",render);
+$("analyticsToggle").addEventListener("change",route);$("adsToggle").addEventListener("change",route);
+render();route();
+})();
+</script>
+</body></html>
