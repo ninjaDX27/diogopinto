@@ -27,6 +27,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r projects/sales-performance-dashboard/requirements.txt -r projects/customer-repurchase-propensity/requirements.txt
+      - name: Set up Node for the growth intelligence pipeline
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test and build growth intelligence demo
+        run: |
+          cd projects/growth-intelligence-pipeline
+          npm test
+          npm run build
+          test -s dist/growth/index.html
+          node --input-type=module -e "import{readFileSync}from'node:fs';const h=readFileSync('dist/growth/index.html','utf8');if(!h.includes('pipeline-data')||h.includes('<!--SYNTHETIC_DATA-->'))process.exit(1)"
       - name: Validate website JavaScript and source links
         run: |
           python - <<'PY'
