@@ -11,6 +11,23 @@ Professional website covering **Growth, Marketing Analytics, Business Intelligen
 | Sales Performance Dashboard | What is happening in sales and where should management investigate? | [ETL, Plotly dashboard, Power BI DAX & documentation](projects/sales-performance-dashboard/) | [Live website section](index.html#demo) |
 | Customer Repurchase Propensity | Who is likely to repurchase within 90 days? | [Model, synthetic generator & methodology](projects/customer-repurchase-propensity/) | [Model comparison](index.html#model) |
 
+### Engineering labs (from existing repositories)
+
+| Project | What to inspect | Links |
+|---|---|---|
+| Mortgage Scenario Lab | Vue 3 comparator, mathematical validation and UI tests; all bank data fictional | [Source](https://github.com/ninjaDX27/cro-landing-pages) · [Codespaces](https://codespaces.new/ninjaDX27/cro-landing-pages) · Site path `/cro/` after deployment |
+| MarTech Tracking Architecture | Consent-aware event contract, GA4 and Meta CAPI simulator | [Source and tests](https://github.com/ninjaDX27/martech-tracking-architecture) |
+| Acquisition Analytics | SQL, reproducible synthetic dataset and KPI definitions | [Source and tests](https://github.com/ninjaDX27/analytics-dashboards) |
+| Offer Review Automation | AI-assisted schema validation with human approval | [Source and tests](https://github.com/ninjaDX27/ai-workflow-automation) |
+
+### Build and publish
+
+The [GitHub Pages workflow](.github/workflows/deploy-pages.yml) now checks out the [CRO source repository](https://github.com/ninjaDX27/cro-landing-pages), runs its tests, builds its Vue app and assembles `index.html` plus `/cro/` into a single static artifact.
+
+- **Independent preview:** Workflow's successful **build** job uploads `portfolio-browser-preview`, a downloadable zip of the site and CRO assets.
+- **Public deployment:** The **deploy** job requires the owner to enable **Settings → Pages → Source → GitHub Actions**. Otherwise it fails with “Get Pages site failed”, even when the build succeeds.
+- When updating CRO code, manually re-run this workflow to refresh the public demo; it does not automatically listen to pushes in the separate CRO repository.
+
 ### Scientific integrity
 
 The website contains clearly labelled **synthetic demonstrations**, not validated real-company dashboard results. The separately published code can analyse the public UCI Online Retail dataset (download independently). ML results shown on the site refer to an earlier **synthetic-data** test; do not interpret them as predictive performance on real customers.
