@@ -32,15 +32,18 @@ async function exportCsv(name,rows,fields){
 }
 await exportCsv("campaign_daily.csv",dataset.daily,
   ["date","campaign_id","channel","impressions","clicks","leads","media_cost"]);
-const lifecycle=dataset.leads.map(l=>({
-  lead_id:l.lead_id,event_id:l.event_id,received_at:l.received_at,
-  campaign_id:l.campaign_id,channel:l.channel,product:l.product,
-  contacted_at:l.stages.contacted??"",qualified_at:l.stages.qualified??"",
-  documented_at:l.stages.documented??"",approved_at:l.stages.approved??"",
-  signed_at:l.stages.signed??"",loan_amount:l.loan_amount,
-  commission_amount:l.commission_amount,
-  analytics_allowed:l.consent.analytics,advertising_allowed:l.consent.advertising
-}));
+const lifecycle=dataset.leads.map(l=>{
+  const observed=(stage)=>l.stages[stage] && l.stages[stage] <= AS_OF ? l.stages[stage] : "";
+  return {
+    lead_id:l.lead_id,event_id:l.event_id,received_at:l.received_at,
+    campaign_id:l.campaign_id,channel:l.channel,product:l.product,
+    contacted_at:observed("contacted"),qualified_at:observed("qualified"),
+    documented_at:observed("documented"),approved_at:observed("approved"),
+    signed_at:observed("signed"),loan_amount:l.loan_amount,
+    commission_amount:observed("signed") ? l.commission_amount : 0,
+    analytics_allowed:l.consent.analytics,advertising_allowed:l.consent.advertising
+  };
+});
 await exportCsv("lead_lifecycle.csv",lifecycle,
   ["lead_id","event_id","received_at","campaign_id","channel","product",
    "contacted_at","qualified_at","documented_at","approved_at","signed_at",
