@@ -11,6 +11,20 @@ Professional website covering **Growth, Marketing Analytics, Business Intelligen
 | Sales Performance Dashboard | What is happening in sales and where should management investigate? | [ETL, Plotly dashboard, Power BI DAX & documentation](projects/sales-performance-dashboard/) | [Live website section](index.html#demo) |
 | Customer Repurchase Propensity | Who is likely to repurchase within 90 days? | [Model, synthetic generator & methodology](projects/customer-repurchase-propensity/) | [Model comparison](index.html#model) |
 
+### Growth Intelligence Pipeline — new integrated case
+
+**[Source and reproducible tests](projects/growth-intelligence-pipeline/)** · **Interactive site route:** `/growth/` after GitHub Pages is enabled.
+
+This synthetic Node.js case joins acquisition campaign costs, a consent-aware event, CRM lead states, 90-day mature cohorts, signed contracts and hypothetical retained commissions. The dashboard supports channel and cohort filters. No API credentials, personally identifying data or live advertising integrations are used.
+
+```bash
+cd projects/growth-intelligence-pipeline
+npm test
+npm run build
+```
+
+Open `dist/growth/index.html` to inspect the self-contained offline dashboard.
+
 ### Engineering labs (from existing repositories)
 
 | Project | What to inspect | Links |
@@ -22,7 +36,7 @@ Professional website covering **Growth, Marketing Analytics, Business Intelligen
 
 ### Build and publish
 
-The [GitHub Pages workflow](.github/workflows/deploy-pages.yml) now checks out the [CRO source repository](https://github.com/ninjaDX27/cro-landing-pages), runs its tests, builds its Vue app and assembles `index.html` plus `/cro/` into a single static artifact.
+The [GitHub Pages workflow](.github/workflows/deploy-pages.yml) also tests and builds the [Growth Intelligence Pipeline](projects/growth-intelligence-pipeline/) into `/growth/`. It now checks out the [CRO source repository](https://github.com/ninjaDX27/cro-landing-pages), runs its tests, builds its Vue app and assembles `index.html` plus `/cro/` into a single static artifact.
 
 - **Independent preview:** Workflow's successful **build** job uploads `portfolio-browser-preview`, a downloadable zip of the site and CRO assets.
 - **Public deployment:** The **deploy** job requires the owner to enable **Settings → Pages → Source → GitHub Actions**. Otherwise it fails with “Get Pages site failed”, even when the build succeeds.
