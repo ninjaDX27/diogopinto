@@ -26,7 +26,7 @@ Open `dist/growth/index.html` in any modern browser (works offline — the dashb
 The build also writes the following **synthetic-only** files to `dist/growth/data/`:
 
 - `campaign_daily.csv`: daily campaign-day media spend, impressions, clicks and leads.
-- `lead_lifecycle.csv`: event IDs, campaign sources, dated CRM states, hypothetical loan and commission amounts, and consent flags (no names, emails or phone numbers).
+- `lead_lifecycle.csv`: event IDs, campaign sources, dated CRM states **censored as of 1 November 2026**, hypothetical loan and commission amounts, and consent flags (no names, emails or phone numbers). Future stages are removed from the exported table, and unobserved contracts have zero commission.
 - `campaign_cohort_metrics.csv`: mature-cohort measures by campaign.
 - `monthly_cohorts.csv`: mature-cohort measures by acquisition month.
 
