@@ -45,7 +45,7 @@ jobs:
       - name: Validate MongoDB adapter input and transition rules
         run: |
           cd projects/growth-intelligence-pipeline/mongodb
-          node --test
+          npm test
           node --check src/server.mjs
           node --check src/db.mjs
           node --check scripts/smoke-test.mjs
