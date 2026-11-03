@@ -77,7 +77,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Publish portfolio and CRO demo
         id: deployment
         uses: actions/deploy-pages@v4
