@@ -1,4 +1,4 @@
-name: Deploy portfolio to GitHub Pages
+name: Build portfolio and CRO demo for GitHub Pages
 
 on:
   push:
@@ -11,33 +11,73 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout portfolio
+        uses: actions/checkout@v4
+        with:
+          path: portfolio
+      - name: Checkout CRO application
+        uses: actions/checkout@v4
+        with:
+          repository: ninjaDX27/cro-landing-pages
+          ref: main
+          path: cro-app
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: cro-app/package-lock.json
+      - name: Test and build CRO application
+        working-directory: cro-app
+        run: |
+          npm ci
+          npm test
+          npm run build -- --base=./
+      - name: Assemble portfolio and browser demo
+        run: |
+          mkdir -p site/cro
+          cp portfolio/index.html site/index.html
+          touch site/.nojekyll
+          cp -R cro-app/dist/. site/cro/
+          test -f site/index.html
+          test -f site/cro/index.html
+          echo "CRO demo copied into /cro/"
+
+      - name: Upload downloadable browser preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-browser-preview
+          path: site
+          retention-days: 14
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Prepare site
-        run: |
-          mkdir -p site
-          cp index.html site/index.html
-          touch site/.nojekyll
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: site
-      - name: Deploy to GitHub Pages
+      - name: Publish portfolio and CRO demo
         id: deployment
         uses: actions/deploy-pages@v4
