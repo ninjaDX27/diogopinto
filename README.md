@@ -2,6 +2,8 @@
 
 Professional website covering **Growth, Marketing Analytics, Business Intelligence and Digital Transformation**.
 
+**Start here:** [Personal profile](https://github.com/ninjaDX27) · [Project catalogue](docs/PROJECT_CATALOG.md) · [GitHub organisation](docs/GITHUB_ORGANIZATION.md) · [Security policy](SECURITY.md)
+
 **Site source:** [index.html](index.html) · **Deployment instructions:** [SITE_GUIDE.md](SITE_GUIDE.md)
 
 ## Projects (reproducible source)
@@ -36,9 +38,9 @@ Open `dist/growth/index.html` to inspect the self-contained offline dashboard.
 
 ### Build and publish
 
-The [GitHub Pages workflow](.github/workflows/deploy-pages.yml) also tests and builds the [Growth Intelligence Pipeline](projects/growth-intelligence-pipeline/) into `/growth/`. It now checks out the [CRO source repository](https://github.com/ninjaDX27/cro-landing-pages), runs its tests, builds its Vue app and assembles `index.html` plus `/cro/` into a single static artifact.
+The [GitHub Pages workflow](.github/workflows/deploy-pages.yml) also tests and builds the [Growth Intelligence Pipeline](projects/growth-intelligence-pipeline/) into `/growth/`. It now checks out the [CRO source repository](https://github.com/ninjaDX27/cro-landing-pages), runs its tests, builds its Vue app and assembles `index.html`, `/cro/` and `/growth/` into a single static artifact.
 
-- **Independent preview:** Workflow's successful **build** job uploads `portfolio-browser-preview`, a downloadable zip of the site and CRO assets.
+- **Independent preview:** Workflow's successful **build** job uploads `portfolio-browser-preview`, a downloadable ZIP of the website, CRO app and Growth Intelligence dashboard.
 - **Public deployment:** The **deploy** job requires the owner to enable **Settings → Pages → Source → GitHub Actions**. Otherwise it fails with “Get Pages site failed”, even when the build succeeds.
 - When updating CRO code, manually re-run this workflow to refresh the public demo; it does not automatically listen to pushes in the separate CRO repository.
 
