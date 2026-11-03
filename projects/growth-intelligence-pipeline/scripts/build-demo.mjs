@@ -1,0 +1,17 @@
+import {mkdir, readFile, writeFile} from "node:fs/promises";
+import {generate, validate, evaluate, AS_OF} from "../src/pipeline.mjs";
+const dataset=generate(2026);
+const problems=validate(dataset);
+if (problems.length) throw new Error(problems.join("\n"));
+const summary=evaluate(dataset,{asOf:AS_OF,matureOnly:true});
+const template=await readFile(new URL("../demo/template.html",import.meta.url),"utf8");
+if (!template.includes("<!--SYNTHETIC_DATA-->")) throw new Error("Demo template placeholder missing");
+const embedded=JSON.stringify(dataset).replace(/</g,"\\u003c");
+const html=template.replace("<!--SYNTHETIC_DATA-->",
+  '<script type="application/json" id="pipeline-data">'+embedded+'</script>');
+await mkdir(new URL("../dist/growth/",import.meta.url),{recursive:true});
+await writeFile(new URL("../dist/growth/index.html",import.meta.url),html,"utf8");
+await writeFile(new URL("../dist/growth/summary.json",import.meta.url),
+  JSON.stringify({source:"synthetic",summary},null,2),"utf8");
+console.log(JSON.stringify({status:"ok",records:dataset.leads.length,cohorts:summary.by_month.length,
+  synthetic:true,html_bytes:Buffer.byteLength(html)},null,2));
