@@ -28,6 +28,23 @@ npm start
 
 The API binds to `127.0.0.1:8787`. `/health` is public **on localhost only**. All CRUD/metrics endpoints require the development bearer token and are intentionally blocked when `NODE_ENV=production`.
 
+## Verify persistence end-to-end
+
+With the Atlas connection string, IP allowlist, database-scoped user and local `.env` configured:
+
+**Terminal A** (keep running):
+```bash
+npm start
+```
+**Terminal B** (open another terminal in the same MongoDB directory):
+```bash
+npm run verify:atlas
+```
+
+The smoke test creates **one synthetic lead**, repeats its original event to confirm idempotency, updates the status `new → contacted → qualified`, lists the latest 50 records and checks the `/v1/metrics` aggregated results. Each run creates a separate fictional lead with a random event ID. It never sends email, telephone, name, borrowing documents or real customer data. The output shows `result: "PASS"` when all checks succeed. The Atlas collection `growth_intelligence_dev.crm_leads` will contain the test records. Delete the development collection when you no longer need the synthetic test data.
+
+**If the test fails:** a working `GET /health` only proves the Node server is listening; Atlas is first contacted by the protected lead endpoint. A `500` or timeout usually means checking the Mongo URI/password, the IP allowlist or the database user's rights. Do not paste the URI or tokens in an issue or public chat.
+
 ## Local tests with curl
 
 Use your actual secret only in the **local shell**, never in frontend code or screenshots.
