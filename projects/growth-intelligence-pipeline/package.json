@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test",
+    "test": "node --test test/pipeline.test.mjs",
     "build": "node scripts/build-demo.mjs"
   }
 }
