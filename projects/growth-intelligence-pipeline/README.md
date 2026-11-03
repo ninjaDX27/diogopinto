@@ -9,6 +9,10 @@ This project models **campaign → event → CRM qualification → documents →
 
 **Important:** This project does not fetch data, imports, events or code from those repositories. It is an *integration design simulation*, not proof of live Google Ads, GA4, Meta CAPI, BigQuery or CRM connectivity. There is no patient, credit application or customer personal data.
 
+## Optional MongoDB Atlas adapter
+
+The [MongoDB Atlas local API scaffold](mongodb/README.md) provides a development-only way to persist lead metadata, enforce idempotent event creation and manage CRM stage transitions. It uses the official MongoDB Node.js driver, runs on localhost and requires a private Atlas connection URI. It is intentionally separate from the public dashboard, and is **not connected** to any real database, advertising account or borrower data.
+
 ## Reproduce
 
 Node.js 22+; no npm dependencies.
