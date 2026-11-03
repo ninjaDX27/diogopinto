@@ -6,3 +6,9 @@ __pycache__/
 .venv/
 *.pyc
 .DS_Store
+
+# Local credentials and build dependencies
+.env
+.env.*
+!.env.example
+node_modules/
