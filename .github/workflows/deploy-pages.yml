@@ -21,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout portfolio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: portfolio
       - name: Checkout CRO application
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ninjaDX27/cro-landing-pages
           ref: main
