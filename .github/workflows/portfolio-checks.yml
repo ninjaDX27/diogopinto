@@ -37,6 +37,10 @@ jobs:
           npm test
           npm run build
           test -s dist/growth/index.html
+          test -s dist/growth/data/campaign_daily.csv
+          test -s dist/growth/data/lead_lifecycle.csv
+          test -s dist/growth/data/campaign_cohort_metrics.csv
+          test -s dist/growth/data/monthly_cohorts.csv
           node --input-type=module -e "import{readFileSync}from'node:fs';const h=readFileSync('dist/growth/index.html','utf8');if(!h.includes('pipeline-data')||h.includes('<!--SYNTHETIC_DATA-->'))process.exit(1)"
       - name: Validate website JavaScript and source links
         run: |
