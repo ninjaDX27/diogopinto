@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node --env-file=.env src/server.mjs",
-    "test": "node --test",
+    "test": "node --test test/model.test.mjs",
     "verify:atlas": "node --env-file=.env scripts/smoke-test.mjs"
   },
   "dependencies": {
